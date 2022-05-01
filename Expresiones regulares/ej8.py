@@ -3,4 +3,4 @@
 import re
 def separalos(string):
     return re.findall("[\d]", string)
-print(separalos("1hola c2puto"))
+print(separalos("1hola c2jojo"))
