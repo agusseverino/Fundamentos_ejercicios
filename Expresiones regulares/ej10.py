@@ -4,12 +4,16 @@
 import re
 def substring(string):
     hola = re.findall("[@|&](.*?)[@|&]", string) 
+    # for i in hola:
+    #     hola5 = []
+    #     hola6 = re.search(i, string)
+    #     hola5.append(hola6)
+    # print(hola, hola5)
+    lista2 = []
     for i in hola:
-        hola5 = []
-        hola6 = re.search(i, string)
-        hola5.append(hola6)
-    print(hola, hola5)
-    
+     lista2.append(string.index(i))
+     
+    return hola, lista2
     
 
 print(substring("@hola@ @como estas& @como"))
