@@ -3,6 +3,11 @@
 # si se encuentran en una frase dada.
 
 import re
-def quilombo(lista_strings, frase):
+import string
+def verificar(lista_strings, frase):
+    strings_lista = []
     for i in lista_strings:
-        return bool(re.search())
+        if i in frase:
+            strings_lista.append(i)
+    return strings_lista
+print(verificar(["hola", "bien", "vos que onda", "jojo"], "hola yo no muy bien"))

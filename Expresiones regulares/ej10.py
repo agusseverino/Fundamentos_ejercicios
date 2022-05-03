@@ -1,32 +1,16 @@
 # Ejercicio 10
 # Obtené las substrings y las posiciones de estas en una string dada
 #  considerando que las substrings están delimitadas por los caracteres @ o &.
-import re
-def substring(string):
-    hola = re.findall("[@|&](.*?)[@|&]", string) 
-    # for i in hola:
-    #     hola5 = []
-    #     hola6 = re.search(i, string)
-    #     hola5.append(hola6)
-    # print(hola, hola5)
-    lista2 = []
-    for i in hola:
-     lista2.append(string.index(i))
-     
-    return hola, lista2
     
+import re
 
-print(substring("@hola@ @como estas& @como"))
+def substrings(string):
+    lista = re.findall("[@|&](.*?)[@|&]", string)
+    lista2 = []
+    for i in lista:
+        lista2.append(string.index(i))
+    return lista, lista2
+
+print(substrings("@hola@ @como estas& @como"))
 
 
-
-
-
-
-
-
-
-
-# def substrings(string):
-#     return re.match("&(\w*)&", string)
-# print(substrings("&hola& hola"))
