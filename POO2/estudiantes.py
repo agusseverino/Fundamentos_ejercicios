@@ -26,6 +26,7 @@ class Persona:
 class Estudiante(Persona):
     def aprobar (self):
         self.feliz = True
+        return self.feliz
     def estudiar(self, horas):
         if self.energia - horas*20 >= 0:
             self.energia -= horas * 20

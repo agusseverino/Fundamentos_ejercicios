@@ -3,7 +3,8 @@
 # Recordá que la frecuencia es la relación entre número de veces que aparece la palabra en cuestión con 
 # respecto a la cantidad total de palabras.
 
-def abrir(archivo):
+
+def abrir2(archivo):
     total = {}
     with open(archivo, "r") as miarch:
         separar = miarch.read().lower().split()
@@ -13,9 +14,7 @@ def abrir(archivo):
             else:
                 total[i] = 1
     for word in total:
-        total[word] = (total[word] / len(separar), 3)
+         total[word] = round((total[word] / len(separar)),3)
     print(total)
-    
-abrir("manipulaciondearchivo2\manipulacion_archi.txt")
-    
 
+print(abrir2("manipulacion_archivosopy.txt"))
