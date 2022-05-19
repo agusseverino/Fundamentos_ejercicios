@@ -1,0 +1,78 @@
+os.listdir() 
+    en Python se usa para obtener la lista de todos los archivos y directorios en el directorio especificado. Si no especificamos ningún
+    directorio, se devolverá la lista de archivos y directorios en el directorio de trabajo actual.
+os.chdir() 
+    Se usa para cambiar el directorio de trabajo actual a la ruta especificada. Solo toma un único argumento como nueva ruta de directorio.
+Crear una ruta relativa
+    ruta_relativa = os.path.join("Documentos", "UCEMA", "Fundamentos", "Práctica4", "archivo.txt")
+Ruta relativa ejemplo
+    (r"_Resultado_\nuevo_texto.txt") Como ya estoy metida donde quiero no tengo que aclarar nada al principio
+Crear nueva carpeta
+    os.mkdir('_Resultado_')
+
+        Modo de apertura
+r	abre un archivo solo para lectura
+r+	abre un archivo para lectura y escritura
+a	Abre un archivo para agregar información. Si el archivo no existe, crea un nuevo archivo para escritura
+w	Abre un archivo solo para escritura. Sobreescribe el archivo si este ya existe. Si el archivo no existe, crea un nuevo archivo para escritura
+        Modo de lectura
+.read() Lee del archivo según el número de bytes de tamaño. Si no se pasa ningún, entonces lee todo el archivo.
+Además, la función read(), así como la función de ayuda readline(), puede recibir un número como parámetro que determinará 
+el número de bytes a leer del archivo. En el caso de un archivo de texto, este será el número de caracteres devueltos.
+.read(8)
+.readline() Lee como máximo el número de caracteres de tamaño de la línea. Esto continúa hasta el final de la línea y luego regresa.
+.readline(5)
+.readlines() Esto lee las líneas restantes del objeto de archivo y las devuelve como una lista.
+
+
+Rutas relativas:
+./Fundamentos/Manipulación_de_archivos.md
+/Fundamentos/Manipulación_de_archivos.md
+un punto (.) se utiliza para referenciar al "directorio actual" y los dos puntos seguidos (..) se utilizan para subir en la jerarquía
+
+            Metodos:
+    Cambiarme de directorio
+import os
+os.getcwd()
+    '/home/Ana'
+os.chdir('/home/Ana/Documents')
+os.getcwd()
+    '/home/Ana/Documents'
+
+    eliminar un archivo
+import os
+os.rename("Ana_Poleo","Ana_Carolina")
+os.listdir("./")
+['Ana_Carolina']
+
+    eliminar una carpeta
+os.rmdir("Ana_Carolina")
+os.chdir("Ana_Carolina")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+OSError: [Errno 2] No such file or directory: 'Ana_Carolina'
+
+
+import os
+import glob
+os.listdir()
+['Ej1.py', 'Ej3.py', 'archivo2.txt', 'Ej2.py', 'Ej4.py', 'documento.txt', 'Ej5.py'...]
+glob.glob("*")
+['Ej1.py', 'Ej3.py', 'archivo2.txt', 'Ej2.py', 'Ej4.py', 'documento.txt', 'Ej5.py'...]
+glob.glob("*.py")
+['Ej1.py', 'Ej3.py', 'Ej2.py', 'Ej4.py', 'Ej5.py'...]
+
+#crear un string que arme la carpeta "datos_personales" en users y que guarde alli un archivo con tu nombre apellido y edad.
+
+import os
+os.getcwd()
+#path = "/Users/anafreggiaro/Desktop/college/informatica/dump"
+
+def crear_archivo_en_carpeta(path):
+    os.chdir(path)
+    os.mkdir("datos_personales") #no ponerle el / , me lo crea donde sea que estoy parado 
+    with open("datos_personales/mis_datos.txt", "w") as file:
+        file.write("Ana Freggiaro, 18 años")
+    
+
+print(crear_archivo_en_carpeta("/Users/anafreggiaro/Desktop/college/informatica/dump"))

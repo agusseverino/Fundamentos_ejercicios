@@ -10,4 +10,4 @@ def verificar(lista_strings, frase):
         if i in frase:
             strings_lista.append(i)
     return strings_lista
-print(verificar(["hola", "bien", "vos que onda", "jojo"], "hola yo no muy bien"))
+print(verificar(["hola", "bien", "vos que onda"], "hola yo muy bien"))

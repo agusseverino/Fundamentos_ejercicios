@@ -18,16 +18,36 @@ titan1.recibir_ataque(4)
 print(titan1.esta_vivo())
 
 class Titan():
-    def __init__(self, salud):
+    def __init__(self, salud): #atributos (el estado es el conjunto de atributos) objeto es lo mismo que clase
         self.salud = salud
-    def recibir_ataque(self, danio):
-        self.salud -= danio * 1.5
+        self.correr = False #no sabe correr. puede ser siempre falso
+    def salud_actual(self):
+        return self.salud #funciona para lo mismo que nosotros antes haciamos pepita.energia
+    def recibir_ataque (self, cantidad):
+        self.salud -=1.5 *cantidad #porque por cada ataque le saca 1.5 de energia
     def grito(self):
-        print("¡Aaaarrrg!")
+        return "¡aaa!"
     def cuantas_casas(self):
-        return (self.salud * 8) / 100
+        return (self.salud * 8 / 100) #te va a decir cuantas casas puede destruir (regla de 3, con 100 de salud puedo destruir 8 casas, con la salud que tiene ahora, cuantas casas?)
+    def destruir_casas(self):
+        if(self.cuantas_casas() >1):
+            #por cada casa que destruye pierde 12.5
+            if ((self.cuantas_casas() %1)>0): #si el resto de dividir por uno es mayor a 0, (o sea 0, algo)
+                self.salud -= (self.cuantas_casas()//1)*12.5 #el // re trunca el número y te saca la coma -> sabemos que tiene coma el numero porque lo pusimos como condición del if. 
+                #truncamos el numero para que no se quede sin salud PORQUE SI NO SE MUERE, asi le queda de salud el resto de el número truncado
+            else: 
+                self.salud -= (self.cuantas_casas() - 1) * 12.5  #le resto 1 para que le quede algo de energia Y NO SE MUERA
+        else:
+            print("no puede destruir ninguna casa") #si no puede destruir mas de una casa, no puede destruir nada
 
-    #no entiendo el de las casas!!!!
-    def esta_vivo(self):
-        return self.salud > 0
+    def esta_vivo(self): #si la salud es mayor a 0 retorna TRUE que significa que esta vivo
+        return (self.salud > 0)
+
+titan1 = Titan(100) #nombre de la variable = objeto con su salud inicial
+titan1.recibir_ataque(30)
+print("esta vivo", titan1.esta_vivo())
+print("salud actual", titan1.salud_actual())
+print("cuantas casas puede destruir", titan1.cuantas_casas())
+print("grito", titan1.grito())
+print("cuantas casas puede destruir", titan1.cuantas_casas())
     

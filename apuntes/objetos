@@ -1,0 +1,142 @@
+*Objetos--- entes computacionales con el que podemos comunicarnos mediante mensajes y puede o no tener un estado interno(referencias a otros objetos)
+Pepita es un objeto que entiende algunos mensajes(comer alpiste, volar en circulos) pero no cantar boleros.
+Los numeros, strings, booleanos, listas y diccionarios son objetos.
+
+    Interfaz: el conjunto de mensajes que entiende
+Que mensajes conforman la interfaz del celular de eli?
+necesita_saldo, tiene_bateria_maxima y cargar_a_tope
+    *Cual es la interfaz que entienden los dos objetos? 
+Tiene_bateria_maxima, cargar_a_tope
+    *Estado--- los atributos que posee. Al acceder a un atributo lo hacemos sin el uso de parentesis
+Los objetos tienen atributos y al conjunto de los mismos se los denomina estado, estos pueden cambiar a lo largo del tiempo.
+Decimos que los objetos tienen un cierto comportamiento.
+    Ambiente: contexto en el que viven objetos, tienen su estado y pueden entender mensajes. En un mismo ambiente podemos contar con varios
+objetos, pepitas y anastasia.  
+Los atributos tambien son objetos y nos permiten guardar valores y representar caracteristicas del objeto que los posea.
+Celular es un molde que nos permite crear objetos-- clase
+Cada objeto que creamos a partir de ellas es una instancia.
+    Clases y polimorfismo
+En el paradigma de objetos, los mismos se crean a partir de moldes llamados clases que sirven para dar vida a objetos que se comporten de igual forma. Pepita y golondrina se crearan de la siguiente manera
+Pepita = Golondrina(100)
+Anastasia = Golondrina(200)
+A partir de una clase llamada golondrina
+class Golondrina:
+  def __init__(self, energia):
+    self.energia = energia
+
+  def comer_alpiste(self, gramos):
+    self.energia += 4 * gramos
+
+  def volar_en_circulos(self):
+    self.volar(0)
+
+  def volar(self, kms):
+    self.energia -= 10 + kms
+
+Crear un objeto a partir de una clase se lo denomina instanciación, a los objetos también se los denomina instancias(de una clase particular) Pepita es una instancia de la clase golondrina. 
+    Interfaces compartidas
+Roberto y pepita no se comportan de la misma manera y tampoco tienen la misma interfaz, pero si tienen una parte en comun: comparten parcialmente la interfaz
+class Cancion:
+  def __init__(self, un_titulo, una_banda):
+    self.titulo = un_titulo
+    self.banda = una_banda
+Titulo y banda son atributos de sus instancias.
+*__init__ -- inicializar, es el constructor de una clase y nos permite darle valores iniciales a los atributos de sus instancias a la hora de crearlas. Es un metodo
+Self-- parametro obligatorio que nos permite acceder a los atributos del objeto que estamos instanciando
+Metodo-- la descripcion de que hacer cuando se recibe un mensaje del mismo nombre
+El conjunto de estos metodos provee de comportamiento a las instancias de una clase
+*Tenemos la clase celular cuyo estado esta compuesto por los atributos bateria y saldo y su interfaz por los mensajes __init__, cargar a tope, tiene_bateria_maxima y necesita_saldo con sus respectivos parametros
+Polimorfismo:
+Capacidad de un objeto de poder enviarle el mismo mensaje indistintamente a objetos de distintas clases.
+Los objetos polimorficos deben pertenecer a clases que entiendan un mensaje mas alla de como este definido el metodo, dos o mas objetos son polimorficos cuando sus clases comparten una interfaz.
+Para estar frente a un caso de polimorfismo es necesaria la presencia de al menos 3 objetos: uno que envie el mensaje y dos clases distintas que puedan entenderlo.
+Cuando dos objetos repiten lógica, creamos una clase con el comportamiento en común. En el caso que dos clases repitan lógica deberíamos crear una nueva clase a la cual llamamos superclase. A esta nueva clase llevaremos los métodos repetidos y haremos que las clases originales hereden de ella. Estas subclases que heredan de la superclase solo contendrán su comportamiento particular.
+A este tipo de clases, como Dispositivo o Ave en el ejemplo del ejercicio anterior, se las llama clases abstractas porque, a diferencia de las clases concretas (como Tablet o Notebook), nunca las instanciamos. En otras palabras, no creamos objetos con esa clase, solo nos sirven para proveer comportamiento a sus subclases.\
+
+    Ejemplo
+a)cuales son sus estados
+
+cuales son sus interfaces
+
+¿Comparten interfaz?
+
+¿Son polimórficas?
+a) El estado de perro es alimento y caricias. El estado es el conjunto
+de atributos, no importa que cambie ni cual es su estado inicial
+En gatos son los mismos.
+b) La interfaz es el conjunto de metodos, que mensajes entiende el objeto o la clase.
+La clase perro entiende el mensaje comer, energia, alimento.
+c) Vemos que gato tiene energia, comer, caricias, acariciar y esta debil. 
+Vemos que perro tiene comer, alimento, acariciar, estadebil y pasear
+La interfaz es el conjunto de metodos. En este caso comparten interfaz parcialmente. Cuando se pregunta
+si comparten interfaz pregunta si la comparten parcialmente.
+d) Son polimorficas? Polimorfismo-- cuando tenemos dos o mas objetos que pueden recibir 1
+o mas mensajes de un tercero. No solo necesitamos los dos objetos sino el terceri
+Si crearamos uno llamado humano, podriamos decirle que le mande el mensaje comer a los dos. Serian polimorficas en ese mensaje
+xq les puede mandar indistintamente a los dos, no importa lo que responda sino el mensaje.
+El efecto del mensaje es distinto pero lo importante para el polimorfismo es que el tercer ibjeto pueda mandarle
+el mensaje.
+Polimorfismo necesitamos que compartan interfaz y un tercer objeto que pueda mandarles el mensaje.
+ Son polimorficas en el metodo COMER. No POLIMORFICAS. Si solo entienden el mensaje de comer gracias al due;o, son polimorficas en eso.
+ No son polimorficas completamente, y la respuesta no es si o no. Es son polimorficas en ese metodo.
+
+class Perro:
+    def __init__(self):
+        self.alimento = 0
+        self.caricias = 0
+
+    def energia(self):
+        return self.alimento + (self.caricias * 10)
+
+    def comer(self, gramos):
+        self.alimento += gramos
+
+    def alimento(self):
+	print(self.alimento)
+
+    def acariciar(self):
+        self.caricias += 1
+
+    def estaDebil(self):
+        return self._caricias < 2
+
+    def pasear(self, km):
+	self.alimento -= km / 4
+
+class Gato:
+    def __init__(self):
+        self.alimento = 0
+        self.caricias = 0
+
+    def energia(self):
+        return self.alimento + (self.caricias * 8)
+
+    def comer(self, gramos):
+        self.alimento += gramos * 1.5
+
+    def caricias(self):
+	print(self.caricias)
+
+    def acariciar(self):
+        self.caricias += 1
+
+    def estaDebil(self):
+        return self._caricias < 4
+print(anastasia.energia)
+
+Polimorfismo: compartir la interfaz.
+Objeto: ente computacional que entiende mensajes y tiene atributos. Tiene un estado (conjunto de atributos) --> estático desde el punto de vista de la arquitectuta. Pero hay también un estado dinámico que contempla los valores concretos de cada uno de esos atributos; el valor que van tomando esos atributos. Dependiendo de como lo esté mirando el estado pueden ser las dos cosas.
+Instanciar el objeto: darle una identidad concreta al objeto. Crear un objeto.
+Los objetos son instancia de una clase. Es la creación concreta de una cosa abstracta.
+La clase es la descripción más general que podemos hacer de los objetos. Es la abstracción. Estructura "generica" que engloba que hace la clase. Para crear la instancia tengo que otorgarles los valores que necesita para "vivir".
+"Pepita" es una instancia de la clase "golondrina".
+Los objetos tienen identidad, son únicos. Si yo comparo 2 instancias de una clase, por más de que tengan la misma energía, tienen distinto código de creación al invocarla. Por lo tanto fueron creadas como diferentes.
+La interfaz de un objeto son los mensajes que pueden entender. La interfaz se puede compartir, parcial o totalmente. Por ejemplos "dragones" y "golondrinas".
+Polimorfismo: para que exista polimorfismo tiene que existir espectador (otro objeto) observando los objetos, porque alguien se tiene que dar cuenta que dos objetos son o no son polimorficos, que esas interfaces son iguales o distintas.
+Compartir la interfaz le permite a los objetos ser polimorficos; pero tiene que haber otro objeto.
+El self representa la instancia de ese objeto. Ya trae todos los atributos de ese objeto.
+Clase madre: clase que engloba otras clases. Le va a heredar cosas a las clases "hijas". Para  que una clase herede a otra escribo la clase madre entre paréntesis.
+Getter: es un tipo de método que me permita acceder a los estados del objeto.
+"Para el entrenador hipo las aves y los dragones no son polimorficos, porque por ejemplo no comen lo mismo. ¿Cómo hacerlo? por ej. definir un método que sea comer que sea genérico.
+Estado--- conjunto de atributos. Atributos--- self.comer .dormir. Si me pregunta el estado le digo todos los atributod
+interfaz-- conjubti de metodos

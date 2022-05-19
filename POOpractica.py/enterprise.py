@@ -24,32 +24,42 @@
 # recibirAtaque(puntos)
 
 class Enterprise():
-    def __init__(self, potencia = 50, coraza = 5):
-        self.potencia = potencia
+    def __init__(self, potencia, coraza):
+        self.potencia = potencia #pudo poner el rango de los estados. tipo que el nivel de potencia vaya de 0 a 100
         self.coraza = coraza
-    def potencia_actual(self):
-        return self.potencia
-    def coraza_actual(self):
-        print(self.coraza)
     def encontrarPilaAtomica(self):
         self.potencia += 25
         if self.potencia > 100:
             self.potencia = 100
     def encontrarEscudo(self):
-        self.coraza +=10
+        self.coraza += 10
         if self.coraza > 20:
-            self.potencia = 100
-    def recibirAtaque(self, puntos): #####dudas!!!!!!!!!!!
-        if self.coraza >= puntos:
-            self.coraza -= puntos
+            self.coraza = 20
+    def recibirAtaque(self, puntos_de_fuerza):
+        if self.coraza >= puntos_de_fuerza:
+            self.coraza -= puntos_de_fuerza
         else:
-            if self.potencia >= puntos:
+            if self.potencia >= puntos_de_fuerza:
+                self.potencia -= (puntos_de_fuerza - self.coraza)
                 self.coraza = 0
-                self.potencia = (self.coraza - puntos)
+            else:
+                self.potencia = 0
+                self.coraza = 0
+    def fortalezaDefensiva(self):
+        print("el máximo nivel de ataque es", str(self.coraza + self.potencia))
+    def necesitaFortalecerse(self):
+        return print(bool((self.coraza == 0) and (self.potencia < 20)))
+    def fortalezaOfensiva(self):
+        if self.potencia < 20:
+            return print("0")
+        else:
+            return print(str((self.potencia -20)/2))
 
-enterprise = Enterprise()
-enterprise.encontrarPilaAtomica()
-enterprise.recibirAtaque(14)
-enterprise.encontrarEscudo()
-print(enterprise.potencia_actual())
-print(enterprise.coraza_actual())
+#
+enterprise = Enterprise(50, 5)  
+enterprise.necesitaFortalecerse()
+enterprise.fortalezaDefensiva()
+enterprise.encontrarPilaAtomica() #75, 5
+enterprise.recibirAtaque(14) #66 ;0
+enterprise.encontrarEscudo() #66 ;10
+print("potencia", str(enterprise.potencia), "coraza", str(enterprise.coraza))  

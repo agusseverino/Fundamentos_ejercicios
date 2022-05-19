@@ -38,5 +38,3 @@ print(tieneh3("he"))
 
 
 
-def espacio(string):
-    return bool((re.findall("(\w*)[_](\w*)", string)))

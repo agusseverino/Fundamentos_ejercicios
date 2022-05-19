@@ -1,0 +1,36 @@
+Cosas importantes:
+    str.replace: replace() acepta dos parámetros, el primer parámetro es el patrón regex con el que quiere hacer coincidir las cadenas
+y el segundo parámetro es la cadena de reemplazo para las cadenas coincidentes.
+Replace para lo que no seria un regex
+>>> aes = 'aaaaaa'
+>>> nueva = aes.replace('a', 'b', 3)
+>>> nueva
+'bbbaaa'
+    re.sub(): La función tiene 3 argumentos principales. El primer argumento acepta un patrón regex, el segundo argumento es una cadena 
+para reemplazar los patrones emparejados, y el tercero es la cadena con la que operar. 
+Puede haber un cuarto que permite el maximo numero de reemplazos.
+re.sub("\W", "_", string, 2) Reemplaza todos los numeros con un maximo de dos reemplazos
+    str.startswith
+    str.endswith
+    str.strip
+    str.lower
+    list.remove
+    str.upper
+    list.append()
+    [-numero:] imprimir las n ultimas
+    .split()
+'1, 2, 3, 4, 5'.split(sep=', ', maxsplit=2)
+['1', '2', '3, 4, 5']
+    Funcion max en un script:
+Encontrar el máximo de 3 variables de cadena según la longitud. Pasaremos una función clave en el max() método.
+
+var1 = "geeks"
+var2 = "for"
+var3 = "geek"
+  
+max_val = max(var1, var2, var3, 
+              key = len) 
+print(max_val)
+
+ctrl + f buscar algo
+

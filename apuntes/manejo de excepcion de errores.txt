@@ -1,0 +1,58 @@
+class Sobreviviente:
+  def __init__(self, adrenalina):
+    self.adrenalina = adrenalina
+  def atacar(self, zombie):
+    if not zombie.es_un_peligro():
+      zombie.recibir_danio(self.adrenalina/2)
+      self.adrenalina += 20
+    else:
+      raise Exception("Es peligroso atacar a este zombi")
+
+muestras_2 = []
+
+def obtener_media(lista):
+    sumatoria = 0
+
+    for valor in lista:
+        sumatoria += valor
+    longitud = len(lista)
+
+    try:
+        print(sumatoria / longitud)
+    except ZeroDivisionError:
+        print("Trataste de dividir entre cero :( ")
+
+obtener_media(muestras_2)
+
+Tengo que pensarlo como usuario
+Debuggin--- buscar errores posibles y que pueden meter cualquier cosa. no necesariamente van a introducir bien las cosas que le pido. 
+#SINTAXIS TRY EXCEPT
+try:
+	# Codigo a ejecutar
+	# Pero podria haber errores en este bloque
+    
+except <tipo de error>:
+	# Haz esto para manejar la excepcion
+	# El bloque except se ejecutara si el bloque try lanza un error
+    
+else:
+	# Esto se ejecutara si el bloque try se ejecuta sin errores
+   
+finally:
+	# Este bloque se ejecutara siempre
+
+Posibles errores:
+IndexError, KeyError y FileNotFoundError, ZeroDivisionError. 
+Y tendrías que añadir un bloque except por cada tipo de error que puedas anticipar.
+#ejemplo de como resolverlo, dependiendo el error uso en el except.
+mi_num = "cinco"
+try:
+  resultado = mas_10(mi_num)
+  print(resultado)
+except TypeError:
+  print("El argumento `mi_num` deberia ser un número")
+
+
+def check_int_type():
+  if type(x)  != int:
+    raise TypeError("Only integers are allowed") 

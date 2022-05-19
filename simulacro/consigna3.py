@@ -21,3 +21,7 @@ def obtener_media(lista):
 
 obtener_media(muestras_2)
 
+# Que otros errores se pueden contemplar??
+# Si fuera un numero lista daria un type error xq hay un for valor in lista
+# O puede pasarle un string, el error mas dificil xq va a devolver algo pero va a estar bien.
+# Meter un parametro no iterable donde el for no va a funcionar. Meter un numero solo, no puedo hacer un for in numero. 

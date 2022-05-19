@@ -1,0 +1,92 @@
+        Secuencias de escape
+\n salto de linea
+\t tab 
+\s espacio de cualquier tipo (\t\n\r\f)
+\S todo lo que no sea un espacio
+' comillas simples
+" comillas dobles
+        Metacaracteres delimitadores-- donde queremos buscar los patrones de busqueda
+^ inicio de linea
+$ fin de linea
+\A inicio de texto
+\Z fin de texto
+.  cualquier caracter de una linea dada. Si quiero el punto literalmente \.
+.l cualquier caracter seguido de una l
+^$ encuentra lineas vacias-- el inicio de linea es inmediatamente seguido por el final de esta
+\b cual delimita caracteres alfanúmericos de otros que no lo son. 
+De esta manera podemos obtener las palabras de alguna frase si delimitamos la búsqueda con 
+este metacarácter al inicio y al final. Así podemos, por ejemplo, reemplazar fácilmente alguna palabra en particular.
+        Metacaracteres cuantificadores
+*-- cero o mas
++ una o mas ocurrencias
+? cero o una
+{n} exactamente n veces
+{n,m} por lo menos n pero no mas de m veces
+        Metacaracteres predefinidos
+\w caracter alfanumerico  [A-Za-z_0-9]
+[a-zA-Z] caracteres alfabeticos
+[a-zA-Z0-9] " " y numericos 
+\W caracter no alfanumerico [^ A-Za-z_0-9]
+\d caracter numerico [0-9]
+\D caracter no numerico [^0-9]
+| alternacion perro|gato
+? la minima cantidad requerida hasta que se 
+cumpla la condicion dentro de un rango o infinito
+\ convierte en caracteres normales a los especiales [\.]
+\b delimita caracteres alfanumericos de otros que no lo son. Podemos obtener las palabras de alguna frase si delimitamos la busqueda con este metacaracter al inicio y al final
+        Rangos 
+[a-d] = [abcd]
+[1-10] = [12345678910]
+[Dd] = una D mayuscula y una minuscula
+[] cualquiera de los caracteres dentro de un grupo 
+[cao]sa coincide con casa y cosa
+[^abc] coincide si no hay ninguna a b ni c
+[aeiou] matchea cualquier caracter incluido en el rango
+a[bB]c- abc, aBc
+[a-zA-Z] 
+[a-zA-Z0-9]
+(-_\.) 
+
+    re.match() 
+determina si la RE coincide con el comienzo de la cadena de caracteres
+result = re.match(r'^The\s\d+\s\w*', string)
+    re.search()
+buscar = cadena.search(expresion);
+Devuelve el número del caracter donde encuentra la primera coincidencia (empieza a contar desde el 0). Si no hay coincidencia devuelve -1
+    findall() 
+encuentra la subcadena de caracteres donde coincide la re y la retorna como una lista.
+Cuando se quieren obtener todas las apariciones del patrón se utiliza el método findall el cual actúa para cada coincidencia 
+como si devolviera el group(1), es decir devuelve en una lista la parte que se encuentra dentro de los delimitadores.
+
+re.match(r'^The\s\d+\s\w*', string).group()
+re.match(r'^The\s\d+\s\w*', string).span()
+    split (patrón, cadena, max = 0) 
+De acuerdo con el separador de patrón de la expresión regular, la función de división divide la cadena en una lista y 
+devuelveLista de coincidencias, Split max operación max tiempos
+método sub (), eliminar caracteres coincidentes
+    re.replace()
+nuevoTexto = cadena.replace(expresion,remplazo);
+Devuelve la cadena original, en la que se ha remplazado las coincidencias encontradas con la expresión regular, 
+por otro texto (remplazo) pasado como segundo argumento
+
+(P\S*?)\s(P\S*)\w
+Si yo le pongo el signo de pregunta me devuelve Practica Po de Practica Portran. en la segunda parte me devuelve 
+una palabra que empieza con P que sigue de un no espacio y un caracter alfanumerico. Po es la minima cantidad para 
+que se cumpla el requerimiento.
+(\w\w\S*\w) --- No empiece con algo que no sea alfanumerico, que tenga algo alfanumerico en el medio sin espacios y 
+buscame eso hasta que aparezca algo que no sea alfanumerico
+
+Por ejemplo, para capturar la parte correspondiente al hostname de un url, utilizaría una expresión 
+como http://([^/]) lo que estoy diciendo con esta expresión es que primero tengo la secuencia de caracteres “http://” y 
+seguido de esto tengo una subexpresión, la cual estoy delimitando con los paréntesis, y aplico una expresión a este segmento 
+en específico, en este caso estoy buscando una cadena que coincide con cualquier caracter excepto el ‘/’.
+
+sub?scripcion-- coincide con suscripcion y subscripcion
+camp*a coincide con cama, campa y camppa
+camp+a coincide con campa y campppa
+(ala)?cena coincide con cena y alacena
+a{2,3} puede estar dos o tres veces
+a{2,} la letra a puede estar dos o mas veces
+a{o,3} 3 o menos
+a{5}
+(.a){2}
